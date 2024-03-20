@@ -1,0 +1,107 @@
+@font-face {
+  font-family: poppins;
+  src: url(../../assets/Font/Poppins-Regular.ttf);
+}
+@font-face {
+  font-family: poppins;
+  src: url(../../assets/Font/Poppins-Regular.ttf);
+}
+.auth-box {
+  border: 1px solid white;
+  background: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  width: 80%;
+  position: absolute;
+  top: 17%;
+  left: 5%;
+}
+.auth-box .account-grid {
+  display: grid;
+  grid-template-columns: 0.7fr 3fr 0.3fr;
+  padding: 10px;
+  border: 1.2px solid lightgray;
+  border-radius: 5px;
+  margin: 15px auto;
+}
+.auth-box .account-grid:hover {
+  border-color: #45a9ea;
+}
+.auth-box .account-grid .icons {
+  color: #45a9ea;
+}
+.auth-box .account-selection {
+  display: none;
+}
+.auth-box form {
+  margin-top: 30px;
+}
+.auth-box form .input {
+  margin: 8px auto;
+}
+@media screen and (min-width: 800px) {
+  .auth-box {
+    width: 35%;
+    margin-top: -3%;
+    margin-left: 27%;
+    padding: 30px 40px;
+  }
+}
+
+body {
+  background: whitesmoke;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  font-family: poppins;
+}
+.container .primary-btn {
+  background: #45a9ea;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 40px;
+  margin-top: 20px;
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: 20px;
+  color: white;
+}
+.container .primary-btn:hover {
+  background: #45a9ea;
+}
+.container .sidenav {
+  background: #ffffff;
+  height: 100vh;
+  margin-left: 0px;
+  margin-top: -65px;
+}
+.container .sidenav li:hover {
+  background-color: #45a9ea;
+  cursor: pointer;
+  color: white;
+  transition: 0.5s;
+}
+.container .logo {
+  margin: 30px auto 10px 35px;
+}
+.container .navbar {
+  width: 71%;
+  margin-left: 27%;
+  background-color: white;
+  color: black;
+  font-family: poppins;
+}
+.container .redirect-link {
+  text-transform: lowercase;
+  width: 100%;
+}
+.container .redirect-link a {
+  color: gray;
+  text-align: center;
+  text-decoration: none;
+}

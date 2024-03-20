@@ -1,0 +1,12 @@
+// font-colors
+$light-blue: rgb(63, 125, 206);
+$dark-blue: rgb(18, 79, 158);
+$very-light-blue: #45a9ea;
+$gray: rgba(236, 234, 234, 0.938);
+
+@font-face {
+    font-family: poppins;
+    src: url(../../assets/Font/Poppins-Regular.ttf);
+}
+
+$poppins: poppins

@@ -1,0 +1,48 @@
+Title: Tenant Management System
+
+Introduction:
+The Tenant Management System (TMS) is a comprehensive software solution designed to streamline and automate the management of rental properties. This system empowers house managers with efficient tools to handle tenant information, property details, and financial transactions.
+
+Objectives:
+
+Centralized Tenant Database: TMS maintains a centralized database containing detailed tenant profiles, facilitating easy access and efficient management of tenant information.
+Property Portfolio Management: The system enables managers to oversee multiple properties, with features for adding, updating, and removing properties seamlessly.
+Payment Tracking: TMS automates rent collection, tracks payment histories, and sends reminders for upcoming payments, ensuring a transparent and efficient financial process.
+Maintenance Requests: Tenants can submit maintenance requests through the system, allowing managers to track, prioritize, and resolve issues promptly.
+Document Repository: TMS serves as a secure repository for important documents such as leases, agreements, and tenant records, enhancing data organization and retrieval.
+Key Features:
+
+Tenant Dashboard:
+
+Personalized tenant profiles with contact information, lease details, and payment history.
+Communication tools for easy interaction between tenants and managers.
+Property Management:
+
+Add, edit, or remove properties with details on location, size, and amenities.
+Property occupancy tracking to manage vacancies and leases effectively.
+Financial Module:
+
+Rent collection automation with multiple payment options.
+Financial reports, including income statements and overdue payment notifications.
+Maintenance Module:
+
+Maintenance request submission and tracking.
+Assignment of tasks to maintenance staff and real-time updates on request status.
+Document Management:
+
+Centralized repository for leases, agreements, and important documents.
+Document version control and secure access permissions.
+Technology Stack:
+The system will be developed using a robust technology stack, including but not limited to:
+
+Frontend: HTML5, CSS3, JavaScript, React
+Backend: Node.js, Express.js, MongoDB
+Payment Integration: Stripe or PayPal
+Security: HTTPS, encryption algorithms for data protection
+Benefits:
+
+Efficiency: TMS automates routine tasks, reducing manual efforts and increasing overall efficiency in property management.
+Transparency: Tenants and managers have real-time access to information, promoting transparency and accountability.
+Scalability: The system is designed to scale with the growing portfolio of properties and increasing tenant databases.
+Conclusion:
+The Tenant Management System aims to revolutionize the way property managers handle tenant-related tasks, ensuring a smooth and transparent process for both managers and tenants. This project will elevate property management practices by embracing modern technology and streamlining operations.

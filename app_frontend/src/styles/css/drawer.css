@@ -1,0 +1,21 @@
+@font-face {
+  font-family: poppins;
+  src: url(../../assets/Font/Poppins-Regular.ttf);
+}
+.drawer {
+  font-family: poppins;
+}
+.drawer li {
+  list-style-type: none;
+  padding: 10px;
+  margin: 10px auto;
+}
+.drawer li:hover {
+  background: rgb(63, 125, 206);
+  border-radius: 5px;
+  color: white;
+}
+.drawer li a {
+  text-decoration: none;
+  color: inherit;
+}

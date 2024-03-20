@@ -1,0 +1,23 @@
+@import './variables';
+
+.drawer {
+    font-family: $poppins;
+
+    li {
+        list-style-type: none;
+        padding: 10px;
+        margin: 10px auto;
+
+        &:hover {
+            background: $light-blue;
+            border-radius: 5px;
+            color: white;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit; 
+            
+        }
+    }
+}
