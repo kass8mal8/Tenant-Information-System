@@ -2,15 +2,16 @@ const { Schema, model } = require('mongoose')
 
 const options = {
     unique: true,
-    required: true
+    required: true,
+    type: Number
 }
 
 const tenantSchema = new Schema({
     user_id: String,
     name: String,
-    telephone: { ...options, type: Number },
+    telephone: options,
     house_number:String,
-    room_number: { ...options, type: String }
+    room_number: String
 })
 
 const Tenant = model('tenant', tenantSchema)
