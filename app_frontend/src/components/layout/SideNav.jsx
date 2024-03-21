@@ -10,7 +10,7 @@ const SideNav = () => {
 
             <List>
                 <ListItem>
-                    <ListItemText primary="Dashboard" />
+                    <ListItemText primary="Dashboard" onClick={() => navigate('/dashboard')}/>
                 </ListItem>
                 <Divider />
                 <ListItem onClick={() => navigate('/tenants')}>

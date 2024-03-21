@@ -14,6 +14,7 @@ import Property from './components/property/Property'
 import AddProperty from './components/property/AddProperty'
 import Tenant from './components/tenants/Tenant'
 import AddFinance from './components/finance/AddFinance'
+import Dashboard from './components/dashboard'
 
 export const AuthContext = createContext({})
 
@@ -51,6 +52,7 @@ function App() {
 										<Route path='house' element={<Property />} />
 										<Route path='/add-property' element={<AddProperty />} />
 										<Route path='add-finance' element={<AddFinance />} />
+										<Route path='dashboard' element={<Dashboard />} />
 									</Route>
 								</Routes>
 							</> 
