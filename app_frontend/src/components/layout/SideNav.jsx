@@ -22,7 +22,7 @@ const SideNav = () => {
                 </ListItem>
                 <Divider />
                 <ListItem>
-                    <ListItemText primary="Financials" onClick={() => navigate('/add-finance')} />
+                    <ListItemText primary="Financials" onClick={() => navigate('/finance')} />
                 </ListItem>
             </List>
 

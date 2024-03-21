@@ -5,6 +5,7 @@ import useFetch from "../../hooks/useFetch";
 import { AuthContext } from "../../App";
 import usePost from "../../hooks/usePost";
 import PrimaryButton from "../PrimaryButton";
+import { useNavigate } from "react-router-dom";
 
 const AddFinance = () => {
     const [houseNumber, setHouseNumber] = useState("")
@@ -18,6 +19,7 @@ const AddFinance = () => {
 
     const { data: appartmentData } = useFetch("appartments", propertyURI)
     const { data: tenantData } = useFetch("tenants", tenantURI)
+    const navigate = useNavigate()
 
     let tenant_id;
     tenantData?.tenants.forEach( tenant => {
@@ -30,7 +32,8 @@ const AddFinance = () => {
         setFinanceDetails({
             ...financeDetails, 
             house_number: houseNumber, 
-            tenant_name: tenantName
+            tenant_name: tenantName,
+            user_id
         })
     }, [houseNumber, tenantName]);
 
@@ -50,6 +53,7 @@ const AddFinance = () => {
         try {
             const res = await post(financeDetails)
             console.log(res)
+            navigate('/finance')
         } catch (error) {
             console.log(error.message)
         }
