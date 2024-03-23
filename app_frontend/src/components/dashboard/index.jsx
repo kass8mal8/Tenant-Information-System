@@ -94,8 +94,8 @@ const Dashboard = () => {
                 </Box>
             </Stack>
                 <Recent 
-                    properties={propData?.appartments.length >= 2 && propData.appartments.slice(-2) || [] } 
-                    tenants={tenantData?.tenants.length >= 2 &&  tenantData.tenants.slice(-2) || []} 
+                    properties={propData?.appartments.length >= 1 && propData.appartments.slice( propData?.appartments.length === 1 ? -1 : -2) || [] } 
+                    tenants={tenantData?.tenants.length >= 1 &&  tenantData.tenants.slice( tenantData?.tenants.length === 1 ? -1 : -2) || []} 
                 />
         </Box>
     )

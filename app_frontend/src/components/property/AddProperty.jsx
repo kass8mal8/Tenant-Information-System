@@ -4,6 +4,7 @@ import usePost from "../../hooks/usePost";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../App";
 import { useNavigate } from "react-router-dom";
+import PrimaryButton from "../PrimaryButton";
 
 const AddProperty = () => {
     const { auth: user } = useContext(AuthContext)
@@ -58,13 +59,7 @@ const AddProperty = () => {
                     <TextField label='Units' name='units' placeholder='10' onChange={handleInputChange} />
                     <TextField label='House No' name='house_number' placeholder='C24' onChange={handleInputChange} />
                 </Stack>
-                <Button 
-                    variant='contained' 
-                    type='submit' 
-                    className='primary-btn' 
-                    sx={{ marginTop: '0px' }}
-                >{ loading ? 'processing' : 'submit' }
-                </Button>
+                <PrimaryButton loading={loading} />
             </form>
         </Box>
     );
