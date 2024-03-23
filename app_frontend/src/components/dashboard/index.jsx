@@ -7,6 +7,7 @@ import { AuthContext } from '../../App';
 import { Box, Skeleton, Stack, Typography } from "@mui/material";
 import { MonetizationOn, MonetizationOnOutlined, PeopleRounded, HouseOutlined, HomeWork, AccountBalanceWallet, Groups, Timer } from "@mui/icons-material";
 import chart from "../../assets/images/chart.jpg"
+import Recent from "./Recent"
 
 Chart.register(ArcElement, Tooltip, Legend, RadialLinearScale)
 
@@ -92,6 +93,10 @@ const Dashboard = () => {
                     <PolarArea data={chartData}/>
                 </Box>
             </Stack>
+                <Recent 
+                    properties={propData?.appartments.length >= 2 && propData.appartments.slice(-2) || [] } 
+                    tenants={tenantData?.tenants.length >= 2 &&  tenantData.tenants.slice(-2) || []} 
+                />
         </Box>
     )
 }
