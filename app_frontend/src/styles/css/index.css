@@ -60,6 +60,12 @@ body {
 .container {
   font-family: poppins;
 }
+.container .dashboard-card {
+  background: white;
+  padding: 16px;
+  width: 100%;
+  align-items: center;
+}
 .container .primary-btn {
   background: #45a9ea;
   width: 100%;

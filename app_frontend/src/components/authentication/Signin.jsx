@@ -39,7 +39,7 @@ const Signin = () => {
             options && localStorage.setItem('jwt', JSON.stringify(options))
 
             const decodedToken = jwtDecode(response?.token)
-            navigate('/dashboard')
+            navigate('/')
             console.log(decodedToken)
             setAuth(decodedToken)
         } catch (error) {

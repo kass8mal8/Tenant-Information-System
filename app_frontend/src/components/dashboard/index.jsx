@@ -4,8 +4,8 @@ import {PolarArea} from 'react-chartjs-2';
 import useFetch from '../../hooks/useFetch';
 import { useContext } from 'react';
 import { AuthContext } from '../../App';
-import { Box, Stack, Typography } from "@mui/material";
-import { MonetizationOn, MonetizationOnOutlined, PeopleRounded, PersonTwoTone } from "@mui/icons-material";
+import { Box, Skeleton, Stack, Typography } from "@mui/material";
+import { MonetizationOn, MonetizationOnOutlined, PeopleRounded, HouseOutlined, HomeWork, AccountBalanceWallet, Groups, Timer } from "@mui/icons-material";
 import chart from "../../assets/images/chart.jpg"
 
 Chart.register(ArcElement, Tooltip, Legend, RadialLinearScale)
@@ -40,28 +40,55 @@ const Dashboard = () => {
         ]
     }    
 
+    const d = new Date()
+    const months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    let remDays = 0
+
+    for(let month in months) {
+        if(+month === d.getMonth()) remDays = months[month] - d.getDate()
+    }
+
     return (
         <Box>
             <Stack direction='row' spacing={2} sx={{ justifyContent: 'space-between' }} >
                 <Box sx={{ width: '100%' }}>
                     <Stack direction='row' spacing={2}>
-                        <Stack direction='row' spacing={2} sx={{background: 'white', p: 2}}>
+                        <Stack className='dashboard-card' direction='row' spacing={2}>
                             <Box>
-                                <Typography variant='body1' sx={{ color: '#45a9ea' }}>{totalFunds ? totalFunds : "0000"}</Typography>
-                                <Typography color='text.secondary' variant='body2' >Rent Collected</Typography>
+                                {totalFunds ? <Typography variant='body1' sx={{ color: '#45a9ea', fontWeight: 'bold', fontSize: '30px' }}>{totalFunds !== 0 ? totalFunds : "0000"}</Typography>
+                                : <Skeleton variant='text' sx={{ height: '40px', width: '100px' }}/>}
+                                <Typography color='text.secondary' variant='body2' >Total Rent</Typography>
                             </Box>
-                            <MonetizationOnOutlined sx={{ width: '50px', height: '50px', color: 'gray' }} />
+                            <AccountBalanceWallet sx={{ width: '65px', height: '65px', color: 'gray' }} />
                         </Stack>
-                        <Stack direction='row' spacing={2} sx={{background: 'white', p: 2}}>
+                        <Stack className='dashboard-card' direction='row' spacing={2}>
                             <Box>
-                                <Typography variant='body1' sx={{ color: '#45a9ea' }}>{tenantData?.tenants?.length ? tenantData.tenants?.length < 10 ? `0${tenantData.tenants?.length}` : tenantData.tenants?.length : "0000"}</Typography>
+                                {tenantData ? <Typography variant='body1' sx={{ color: '#45a9ea', fontWeight: 'bold', fontSize: '30px' }}>{tenantData.tenants.length ? tenantData.tenants?.length < 10 ? `0${tenantData.tenants?.length}` : tenantData.tenants?.length : "0000"}</Typography>
+                                : <Skeleton variant='text' sx={{ height: '40px' }}/>}
                                 <Typography color='text.secondary' variant='body2' >Total Tenants</Typography>
                             </Box>
-                            <PeopleRounded sx={{ width: '50px', height: '50px', color: 'gray' }} />
+                            <Groups sx={{ width: '70px', height: '70px', color: 'gray' }} />
                         </Stack>
                     </Stack>
+                    <Stack my={2} direction='row' spacing={2} sx={{background: 'white', p: 2, alignItems: 'center'}}>
+                        <Box>
+                            {propData ? <Typography variant='body1' sx={{ color: '#45a9ea', fontWeight: 'bold', fontSize: '30px' }}>{propData.appartments?.length ? propData.appartments?.length < 10 ? `0${propData.appartments?.length}` : propData.appartments?.length : "0000"}</Typography>
+                            : <Skeleton variant='text' sx={{ height: '40px' }}/> }
+                            <Typography color='text.secondary' variant='body2' >Total Properties Managing</Typography>
+                        </Box>
+                        <HomeWork sx={{ width: '70px', height: '70px', color: 'gray'  }} />
+                    </Stack>
+
+                    <Stack direction='row' sx={{background: 'white', p: 2, alignItems: 'center'}}>
+                        <Box>
+                            {remDays ? <Typography sx={{ color: '#45a9ea', fontWeight: 'bold', fontSize: '30px' }}>{remDays < 10 && `0${remDays}` }</Typography>
+                            : <Skeleton variant='text' sx={{ height: '40px' }}/>}
+                            <Typography>Days remaining to rent collection</Typography>
+                        </Box>
+                        <Timer sx={{ width: '70px', height: '70px', color: 'gray', ml: 3 }} />
+                    </Stack>
                 </Box>
-                <Box sx={{ width: '100%', background: 'white', borderRadius: '5px' }}>
+                <Box sx={{ width: '100%', height: '340px', background: 'white', borderRadius: '5px' }}>
                     <PolarArea data={chartData}/>
                 </Box>
             </Stack>

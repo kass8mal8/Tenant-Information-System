@@ -1,4 +1,4 @@
-import { useState, createContext } from 'react'
+import { useState, createContext, useEffect } from 'react'
 import { Box, createTheme, ThemeProvider } from '@mui/material'
 import './styles/css/index.css'
 import { Route, Routes } from 'react-router'
@@ -16,6 +16,7 @@ import Tenant from './components/tenants/Tenant'
 import AddFinance from './components/finance/AddFinance'
 import Dashboard from './components/dashboard'
 import Finance from './components/finance/Finance'
+import { jwtDecode } from 'jwt-decode'
 
 export const AuthContext = createContext({})
 
@@ -27,11 +28,16 @@ function App() {
 		}
 	})
 	
-	const [auth, setAuth] = useState({})
+	
     const [csrf] = useState({})
-	console.log('auth:', auth)
+	
 	const location = useLocation()
 	const authRoutes = ['/signin', '/signup']
+	const token = localStorage.getItem('jwt').split(':')
+	const userDetails = jwtDecode(token[1])
+
+	useEffect(() => setAuth(userDetails), []);
+	const [auth, setAuth] = useState(userDetails)
 
   return (
   	<QueryClientProvider client={queryClient}>
@@ -46,17 +52,20 @@ function App() {
 						:	<>
 								<NavBar />
 								<SideNav />
-								<Routes>
-									<Route path='/' element={<Home />}>
-										<Route path='add-tenant' element={<AddTenant />} />
-										<Route path='tenants' element={<Tenant />} />
-										<Route path='house' element={<Property />} />
-										<Route path='finance' element={<Finance />} />
+								<Box sx={{ position: 'absolute', marginLeft: '27%', marginTop: '-47%', width: '71%', alignItems: 'center' }}>
+									<Routes>
+										<Route path='/' element={<Dashboard />} />
+										{/* <Route path='/' element={<Home />}/> */}
+										<Route path='/add-tenant' element={<AddTenant />} />
+										<Route path='/tenants' element={<Tenant />} />
+										<Route path='/house' element={<Property />} />
+										<Route path='/finance' element={<Finance />} />
 										<Route path='/add-property' element={<AddProperty />} />
-										<Route path='add-finance' element={<AddFinance />} />
-										<Route path='dashboard' element={<Dashboard />} />
-									</Route>
-								</Routes>
+										<Route path='/add-finance' element={<AddFinance />} />
+
+									</Routes>
+								</Box>
+									
 							</> 
 					}
 				</Box>
