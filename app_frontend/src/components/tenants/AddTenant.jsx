@@ -6,6 +6,7 @@ import PrimaryButton from "../PrimaryButton";
 import { AuthContext } from "../../App";
 import useFetch from "../../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
+import Toast from "../Toast";
 
 const AddTenant = () => {
     const [tenantDetails, setTenantDetails] = useState()
@@ -18,6 +19,11 @@ const AddTenant = () => {
     const { data } = useFetch("appartments", propertyURI)
     const [houseNumber, setHouseNumber] = useState()
     const navigate = useNavigate()
+    const [success, setSuccess] = useState()
+    const [error, setError] = useState(null)
+    const [open, setOpen] = useState(false)
+
+    const handleClose = () => setOpen(prev => !prev)
 
     const handleInputChange = (e) => {
         setTenantDetails({
@@ -39,14 +45,18 @@ const AddTenant = () => {
         try {
             const res = await post(tenantDetails)
             console.log(res)
+            setSuccess(res.message)
             navigate('/tenants')
+            
         } catch (error) {
+            setError(error.message)
             console.log(error.message)
         }
     }
 
     return (  
         <Stack direction='row' spacing={2} sx={{width: '95%', marginLeft: '0%', background: 'white', p: 3, borderRadius: '5px' }}>
+            <Toast error={error} data={success} open={open} handleClose={handleClose} />
             <img src={tenant} alt="tenant illustration" width='35%' />
             <form style={{ marginTop: '50px', width: '50%', marginLeft: '10%' }} onSubmit={handleTenantSubmit}>
                 <Typography variant='body2' color='text.secondary' sx={{ my: 2 }} >Onboard new tenants!</Typography>

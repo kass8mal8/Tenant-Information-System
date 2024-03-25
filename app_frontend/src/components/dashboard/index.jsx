@@ -14,7 +14,7 @@ Chart.register(ArcElement, Tooltip, Legend, RadialLinearScale)
 const Dashboard = () => {
     const labels = ['Tenants', 'Finance', 'Property']
     const { auth: user } = useContext(AuthContext)
-    const { user_id } = user
+    const { user_id } = user || {};
 
     const propURI = `http://localhost:5000/api/house/${user_id}`
     const tenantURI = `http://localhost:5000/api/tenants/${user_id}`

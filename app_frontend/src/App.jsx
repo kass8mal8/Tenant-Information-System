@@ -17,6 +17,7 @@ import AddFinance from './components/finance/AddFinance'
 import Dashboard from './components/dashboard'
 import Finance from './components/finance/Finance'
 import { jwtDecode } from 'jwt-decode'
+import { useNavigate } from 'react-router-dom'
 
 export const AuthContext = createContext({})
 
@@ -28,16 +29,26 @@ function App() {
 		}
 	})
 	
-	
-    const [csrf] = useState({})
-	
-	const location = useLocation()
-	const authRoutes = ['/signin', '/signup']
-	const token = localStorage.getItem('jwt').split(':')
-	const userDetails = jwtDecode(token[1])
+	const [auth, setAuth] = useState(null);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const authRoutes = ['/signin', '/signup'];
 
-	useEffect(() => setAuth(userDetails), []);
-	const [auth, setAuth] = useState(userDetails)
+    useEffect(() => {
+        const jwt = localStorage.getItem('jwt');
+        if (!jwt) {
+            navigate('/signin');
+        } else {
+            try {
+                const token = jwt.split(':');
+                const userDetails = jwtDecode(token[1]);
+                setAuth(userDetails);
+            } catch (error) {
+                console.error('Error decoding JWT token:', error);
+                navigate('/signin');
+            }
+        }
+    }, [navigate]);
 
   return (
   	<QueryClientProvider client={queryClient}>
