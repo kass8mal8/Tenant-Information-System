@@ -36,7 +36,7 @@ function App() {
 
     useEffect(() => {
         const jwt = localStorage.getItem('jwt');
-        if (!jwt) {
+        if (location.pathname === '/' && !jwt) {
             navigate('/signin');
         } else {
             try {
@@ -48,7 +48,7 @@ function App() {
                 navigate('/signin');
             }
         }
-    }, [navigate]);
+    }, []);
 
   return (
   	<QueryClientProvider client={queryClient}>

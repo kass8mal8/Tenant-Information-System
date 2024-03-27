@@ -45,9 +45,7 @@ body {
 
         li {
             &:hover {
-                background-color: $very-light-blue;
                 cursor: pointer;
-                color: white;
                 transition: .5s;
             }
         }

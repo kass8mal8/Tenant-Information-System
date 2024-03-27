@@ -87,9 +87,7 @@ body {
   margin-top: -65px;
 }
 .container .sidenav li:hover {
-  background-color: #45a9ea;
   cursor: pointer;
-  color: white;
   transition: 0.5s;
 }
 .container .logo {
