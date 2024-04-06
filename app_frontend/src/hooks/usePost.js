@@ -13,22 +13,19 @@ const usePost = (url) => {
                     'Content-Type': 'application/json'                    
                 }
             })
-            console.log(res)
+            console.log(res.data)
 
-            if(res.status !== 200) {
-                return res.data.message
-            }
-            else {
-                console.log(res)
-                return res.data
-            }
+            return res.data
+            
+            
         } 
         catch (error) {
-            setError(error.message)
+            // setError(error.message)
             setLoading(false)
         } 
         finally {
             setLoading(false)
+            // setError(null)
         }
     }
     

@@ -7,6 +7,10 @@ const SideNav = () => {
     const location = useLocation()
 
     const path = location.pathname
+    const handleSignOut = () => {
+        localStorage.removeItem('jwt')
+        navigate('/signin')
+    }
 
     return (  
         <Box className='sidenav' sx={{ width:'25%' }}>
@@ -39,7 +43,7 @@ const SideNav = () => {
                     left: '20px',
                     cursor: 'pointer'
                 }}
-                onClick={() => navigate('/signin')}
+                onClick={handleSignOut}
             >signout</Typography>
         </Box>
     );

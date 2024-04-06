@@ -49,6 +49,7 @@ const Dashboard = () => {
         if(+month === d.getMonth()) remDays = months[month] - d.getDate()
     }
 
+    console.log(remDays)
     return (
         <Box>
             <Stack direction='row' spacing={2} sx={{ justifyContent: 'space-between' }} >
@@ -82,9 +83,9 @@ const Dashboard = () => {
 
                     <Stack direction='row' sx={{background: 'white', p: 2, alignItems: 'center'}}>
                         <Box>
-                            {remDays ? <Typography sx={{ color: '#45a9ea', fontWeight: 'bold', fontSize: '30px' }}>{remDays < 10 && `0${remDays}` }</Typography>
+                            {remDays ? <Typography sx={{ color: '#45a9ea', fontWeight: 'bold', fontSize: '30px' }}>{remDays < 10 ? `0${remDays}` : remDays }</Typography>
                             : <Skeleton variant='text' sx={{ height: '40px' }}/>}
-                            <Typography>Days remaining to rent collection</Typography>
+                            <Typography color='text.secondary' variant='body2'>Days remaining to rent collection</Typography>
                         </Box>
                         <Timer sx={{ width: '70px', height: '70px', color: 'gray', ml: 3 }} />
                     </Stack>

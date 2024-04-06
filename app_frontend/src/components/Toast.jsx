@@ -6,16 +6,16 @@ const Alert = forwardRef((props, ref) => {
 	return <MuiAlert  ref={ref} {...props} />
 })
 
-const Toast = ({ error, data, open, handleClose }) => {
+const Toast = ({ data, open, handleClose, error }) => {
     return (  
         <Snackbar 
-            open={!open} 
+            open={open} 
             onClose={handleClose} 
             autoHideDuration={2000}
-            anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+            anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
         >
-            <Alert severity={error ? 'error' : 'success' }  > 
-                <Typography> {data ? data : error } </Typography>
+            <Alert severity={error && 'error'}> 
+                <Typography> {data ? data : error} </Typography>
             </Alert>
         </Snackbar>
     );

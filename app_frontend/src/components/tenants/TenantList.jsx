@@ -1,15 +1,44 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Box, Stack, Button, Typography, Divider } from "@mui/material"
 import TenantCard from "./TenantCard"
 import { InfoOutlined } from "@mui/icons-material"
 import { useNavigate } from "react-router-dom";
+import Toast from "../Toast";
+import { AuthContext } from "../../App";
+import useFetch from "../../hooks/useFetch";
 
 const TenantList = ({ tenants }) => {
     const headerText = ["Tenant Name", "House Number", "Room Number", "Telephone", "Actions"]
     const navigate = useNavigate()
+    const [open, setOpen] = useState(false)
+    const { auth: user } = useContext(AuthContext)
+    const { user_id } = user
+    const url = `http://localhost:5000/api/house/${user_id}`
+
+    const { isLoading, data, isFetching, error } = useFetch("appartments", url)
+    console.log(data?.appartments)
+
+    const handleClose = (e, reason) => {
+        if(reason === 'clickaway') {
+            return
+        } else {
+            setOpen(false)
+        }
+    }
+    console.log(tenants)
+
+    const handleTenantAddition = () => {
+        if(!data?.appartments.length) {
+            setOpen(true)
+            return
+        } else {
+            navigate('/add-tenant')
+        } 
+    }
 
     return (  
         <Box>
+            <Toast data={"Make sure to add property first"} error={"Please add property first"} handleClose={handleClose} open={open} />
             { tenants.length ? 
                 <>
                     <Box>
@@ -47,7 +76,7 @@ const TenantList = ({ tenants }) => {
                         marginLeft: '70px',
                         marginTop: '10px'
                     }}
-                    onClick={() => navigate('/add-tenant')}
+                    onClick={handleTenantAddition}
                     >add tenant
                 </Button>
             </Box>

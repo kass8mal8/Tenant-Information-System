@@ -56,7 +56,6 @@ const AddTenant = () => {
 
     return (  
         <Stack direction='row' spacing={2} sx={{width: '95%', marginLeft: '0%', background: 'white', p: 3, borderRadius: '5px' }}>
-            <Toast error={error} data={success} open={open} handleClose={handleClose} />
             <img src={tenant} alt="tenant illustration" width='35%' />
             <form style={{ marginTop: '50px', width: '50%', marginLeft: '10%' }} onSubmit={handleTenantSubmit}>
                 <Typography variant='body2' color='text.secondary' sx={{ my: 2 }} >Onboard new tenants!</Typography>
