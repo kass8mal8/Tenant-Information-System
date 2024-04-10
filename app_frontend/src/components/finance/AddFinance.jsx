@@ -15,6 +15,7 @@ import { AuthContext } from '../../App';
 import usePost from '../../hooks/usePost';
 import PrimaryButton from '../PrimaryButton';
 import { useNavigate } from 'react-router-dom';
+import Toast from '../Toast';
 
 const AddFinance = () => {
   const [houseNumber, setHouseNumber] = useState('');
@@ -25,6 +26,13 @@ const AddFinance = () => {
 
   const tenantURI = `http://localhost:5000/api/tenants/${user_id}`;
   const propertyURI = `http://localhost:5000/api/house/${user_id}`;
+  const [snackError, setSnackError] = useState('')
+  const [open, setOpen] = useState(false)
+
+  const handleClose = (e, reason) => {
+    if(reason === 'clickaway') return 
+    setOpen(false)
+  }
 
   const { data: appartmentData } = useFetch(
     'appartments',
@@ -51,9 +59,6 @@ const AddFinance = () => {
 
   const financeURI = `http://localhost:5000/api/finance/add/${tenant_id}`;
   const { post, loading } = usePost(financeURI);
-  const dateExp = /\d\d-\d\d-\d\d\d\d/;
-  // const ds = '10-12-2004'
-  // console.log()
 
   const handleInputChange = (e) => {
     setFinanceDetails({
@@ -61,9 +66,6 @@ const AddFinance = () => {
       [e.target.name]: e.target.value,
     });
 
-    // if(e.target.name === 'payment_date') {
-    //     dateExp.test(ds)
-    // }
   };
 
   const handleFinanceSubmit = async (e) => {
@@ -72,10 +74,13 @@ const AddFinance = () => {
 
     try {
       const res = await post(financeDetails);
+      
       console.log(res);
       navigate('/finance');
     } catch (error) {
-      console.log(error.message);
+        setSnackError(error.message)
+        console.log(snackError);
+        setOpen(true)
     }
   };
 
@@ -91,6 +96,7 @@ const AddFinance = () => {
         borderRadius: '5px',
       }}
     >
+        <Toast open={open} data={null} error={snackError} handleClose={handleClose} />
       <form
         style={{
           marginTop: '30px',

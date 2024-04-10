@@ -11,10 +11,10 @@ const Toast = ({ data, open, handleClose, error }) => {
     <Snackbar
       open={open}
       onClose={handleClose}
-      autoHideDuration={2000}
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      autoHideDuration={3000}
+      anchorOrigin={{ vertical: 'top', horizontal: 'middle' }}
     >
-      <Alert severity={'error'}>
+      <Alert severity={error ? 'error' : 'success'}>
         <Typography> {data ? data : error} </Typography>
       </Alert>
     </Snackbar>

@@ -60,17 +60,12 @@ const Signin = () => {
       navigate('/');
       console.log(response.message);
 
-      if (response.data) {
-        setSnackData(response?.data.message);
-      } else {
-        setSnackData(response?.message);
-      }
       // console.log(res)
       console.log(snackData);
 
       setAuth(decodedToken);
     } catch (error) {
-      console.log(error.message);
+      console.log(error.message);cd de
       //   snackError = error.message;
       setSnackError(error.message);
       setOpen(true);

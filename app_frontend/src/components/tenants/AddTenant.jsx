@@ -19,16 +19,30 @@ const AddTenant = () => {
     const { data } = useFetch("appartments", propertyURI)
     const [houseNumber, setHouseNumber] = useState()
     const navigate = useNavigate()
-    const [success, setSuccess] = useState()
-    const [error, setError] = useState(null)
     const [open, setOpen] = useState(false)
+    const [snackError, setSnackError] = useState('')
 
     const handleClose = () => setOpen(prev => !prev)
 
     const handleInputChange = (e) => {
-        setTenantDetails({
-            ...tenantDetails, [e.target.name]: e.target.value
-        })
+        if(e.target.name === 'telephone') {
+            if(e.target.value.length > 10) {
+                setTenantDetails({
+                    ...tenantDetails, [e.target.name]: +`${e.target.value.slice(3, )}`
+                })
+            }
+            else {
+                setTenantDetails({
+                    ...tenantDetails, [e.target.name]: +e.target.value
+                })
+            }
+        }
+        else {
+            setTenantDetails({
+                ...tenantDetails, [e.target.name]: e.target.value
+            })
+        }
+
     }
     useEffect(() => {
         setTenantDetails({
@@ -37,6 +51,7 @@ const AddTenant = () => {
     }, [houseNumber]);
     console.log(houseNumber)
 
+    const errorMessages = ["Phone must be a number", "Invalid phone number"]
 
     const handleTenantSubmit = async(e) => {
         e.preventDefault()
@@ -44,20 +59,29 @@ const AddTenant = () => {
 
         try {
             const res = await post(tenantDetails)
+            setSnackError(res.message)
+            setOpen(true)
             console.log(res)
-            setSuccess(res.message)
-            navigate('/tenants')
+            
+
+            if(errorMessages.includes(res.message)) {
+                return
+            }
+            else { navigate('/tenants') }
+
             
         } catch (error) {
-            setError(error.message)
+            setSnackError(error.message)
+            setOpen(true)
             console.log(error.message)
         }
     }
 
     return (  
         <Stack direction='row' spacing={2} sx={{width: '95%', marginLeft: '0%', background: 'white', p: 3, borderRadius: '5px' }}>
+            <Toast open={open} data={null} error={snackError} handleClose={handleClose} />
             <img src={tenant} alt="tenant illustration" width='35%' />
-            <form style={{ marginTop: '50px', width: '50%', marginLeft: '10%' }} onSubmit={handleTenantSubmit}>
+            <form style={{marginTop: '50px', width: '50%', marginLeft: '10%' }} onSubmit={handleTenantSubmit}>
                 <Typography variant='body2' color='text.secondary' sx={{ my: 2 }} >Onboard new tenants!</Typography>
                 <Stack direction='row' spacing={2}>
                     <TextField name="name" label='Name' placeholder='John Doe' fullWidth type='text' onChange={handleInputChange} />

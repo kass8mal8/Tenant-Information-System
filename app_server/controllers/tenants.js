@@ -6,12 +6,21 @@ const addTenant = async(req, res) => {
     console.log(req.body, user_id)
 
     try {
-        const tenant = await Tenant.create({ name, telephone, house_number, room_number, user_id })
-        res.json({ message: "Tenant added successfully" }).status(200)
+        if(typeof(telephone) !== 'number') {
+            res.json({ message: "Phone must be a number" })
+        }
+        else if(telephone.toString().length !== 9) {
+            res.json({ message: "Invalid phone number" })
+        }
+        else {
+            const tenant = await Tenant.create({ name, telephone, house_number, room_number, user_id })
+            res.json({ message: `${tenant.name} added successfully` }).status(200)
+        }
     } catch (error) {
         console.log({error})
         res.json({ error }).status(500)
     }
+
 }
 
 const removeTenant = async(req, res) => {

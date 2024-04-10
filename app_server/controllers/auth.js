@@ -11,8 +11,7 @@ const createToken = (payload) => {
 
 const signup = async (req, res) => {
   console.log(req.body);
-  const { first_name, surname, email, password, user_type } =
-    req.body;
+  const { first_name, surname, email, password, user_type } = req.body;
 
   try {
     const user = await User.create({
@@ -28,19 +27,14 @@ const signup = async (req, res) => {
       email: user.email,
       user_id: user._id,
     };
-    console.log('Payload:', payload);
     const token = createToken(payload);
+    res.json({ token, message: `${user.first_name} created successfully` }).status(200)
 
-    res
-      .json({
-        token,
-        message: `${user.first_name} created successfully`,
-      })
-      .status(200);
-  } catch (error) {
-    res.json({ message: error.message }).status(500);
-  }
-};
+
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+}
 
 const signin = async (req, res) => {
   const { email, password } = req.body;
@@ -56,7 +50,6 @@ const signin = async (req, res) => {
         user_id: user._id,
         user_type: user.user_type,
       };
-      console.log('Payload:', user);
       const token = createToken(payload);
 
       res
@@ -67,10 +60,6 @@ const signin = async (req, res) => {
         .status(200);
     }
   } catch (error) {
-    console.log('😊😊😊 message,');
-    console.log(error.message);
-
-    // res.error({ message: error.message }).status(500);
     res.status(500).json({ message: error.message });
   }
 };
