@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../App";
 import { useNavigate } from "react-router-dom";
 import TenantList from "./TenantList";
-import EditTenant from "./EditTenant";
+import EditTenant from "./EditTenantForm";
 
 const Tenant = () => {
     const { auth: user } = useContext(AuthContext)

@@ -65,7 +65,7 @@ const Signin = () => {
 
       setAuth(decodedToken);
     } catch (error) {
-      console.log(error.message);cd de
+      console.log(error.message);
       //   snackError = error.message;
       setSnackError(error.message);
       setOpen(true);

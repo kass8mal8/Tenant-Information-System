@@ -1,5 +1,4 @@
 import { Box, Button, InputLabel, MenuItem, Select, Stack, TextField, Typography, FormControl } from "@mui/material";
-import tenant from "../../assets/images/tenant illustration.svg"
 import { useContext, useEffect, useState } from "react";
 import usePost from "../../hooks/usePost";
 import PrimaryButton from "../PrimaryButton";
@@ -7,6 +6,7 @@ import { AuthContext } from "../../App";
 import useFetch from "../../hooks/useFetch";
 import { useNavigate } from "react-router-dom";
 import Toast from "../Toast";
+import tenantPhoto from "../../assets/images/tenant illustration.svg"
 
 const AddTenant = () => {
     const [tenantDetails, setTenantDetails] = useState()
@@ -80,7 +80,7 @@ const AddTenant = () => {
     return (  
         <Stack direction='row' spacing={2} sx={{width: '95%', marginLeft: '0%', background: 'white', p: 3, borderRadius: '5px' }}>
             <Toast open={open} data={null} error={snackError} handleClose={handleClose} />
-            <img src={tenant} alt="tenant illustration" width='35%' />
+            <img src={tenantPhoto} alt="tenant illustration" width='35%' />
             <form style={{marginTop: '50px', width: '50%', marginLeft: '10%' }} onSubmit={handleTenantSubmit}>
                 <Typography variant='body2' color='text.secondary' sx={{ my: 2 }} >Onboard new tenants!</Typography>
                 <Stack direction='row' spacing={2}>

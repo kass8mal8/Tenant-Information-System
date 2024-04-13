@@ -1,10 +1,11 @@
 import { Typography, Divider, Stack, IconButton } from "@mui/material"
-import { Edit, Delete } from "@mui/icons-material"
+import { Edit, Delete, SentimentVeryDissatisfiedTwoTone } from "@mui/icons-material"
 import { useQueryClient } from "@tanstack/react-query"
 import handleDelete from "../utils/handleDelete"
 import { useLocation } from "react-router-dom"
 import { useState } from "react"
 import Toast from "../Toast"
+import Popup from "./Popup"
 
 const TenantCard = ({ tenant }) => {
     const queryClient = useQueryClient()
@@ -15,6 +16,7 @@ const TenantCard = ({ tenant }) => {
         setOpen(false)
         if(reason === 'clickaway') return 
     }
+    const [edit, setEdit] = useState(false)
 
     return (  
         <Stack key={tenant._id} direction='row' sx={{ mt: 1.5 , p: 0.6, borderRadius: '5px', background: 'rgba(236, 234, 234, 0.938)', alignItems: 'center', width: '100%' }}>
@@ -34,11 +36,12 @@ const TenantCard = ({ tenant }) => {
                 <IconButton onClick={() => {handleDelete(tenant._id, refetchTenants, location); setOpen(true)}}>
                     <Delete sx={{ width: '17px', height: '17px' }} />
                 </IconButton>
-                <IconButton>
+                <IconButton onClick={() => {setEdit(true); console.log(edit)}}>
                     <Edit sx={{ width: '17px', height: '17px' }} />
                 </IconButton>
             </Stack>
 
+            <Popup setEdit={setEdit} tenant={tenant} edit={edit} />
             <Toast open={open} handleClose={handleClose} error={null} data={'Deleted successfully'} />
         </Stack>
     );
