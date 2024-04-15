@@ -15,6 +15,9 @@ const EditTenantForm = ({ open, handleClose, tenant, setEdit, updateFn, setOpen 
     const url = `http://localhost:5000/api/tenants/update/${tenant._id}`
     const propertyURI = `http://localhost:5000/api/house/${user_id}`
     const [tenantUpdate, setTenantUpdate] = useState(tenant)
+    useEffect(() => {
+        setTenantUpdate(tenant)
+    }, [tenant]);
     // const queryClient = useQueryClient()
     // const refetchTenants = () => queryClient.invalidateQueries(['tenants'])
 

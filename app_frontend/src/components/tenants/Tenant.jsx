@@ -14,7 +14,7 @@ const Tenant = () => {
     console.log(data)
     const [open, setOpen] = useState(true)
     return (  
-        <Box>
+        <Box sx={{mt: 5}}>
             <TenantList tenants={data?.tenants || [] } />
             {/* <EditTenant open={open} /> */}
         </Box>

@@ -12,7 +12,7 @@ const Finance = () => {
 
     const { data } = useFetch("finances", url)
     return (  
-        <Box>
+        <Box sx={{mt: 5}}>
             <FinanceList finances={ data?.finance || [] } /> 
         </Box>
     );

@@ -15,7 +15,7 @@ const property = () => {
     const { isLoading, data, isFetching, error } = useFetch("appartments", url)
     console.log(data)
     return (  
-        <Box>
+        <Box sx={{mt: 5}}>
             <PropertyList properties={data?.appartments || [] } />
         </Box>
     );

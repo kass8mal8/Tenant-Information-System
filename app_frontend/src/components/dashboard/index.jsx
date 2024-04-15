@@ -51,7 +51,7 @@ const Dashboard = () => {
 
     console.log(remDays)
     return (
-        <Box>
+        <Box sx={{mt: 5}}>
             <Stack direction='row' spacing={2} sx={{ justifyContent: 'space-between' }} >
                 <Box sx={{ width: '100%' }}>
                     <Stack direction='row' spacing={2}>
