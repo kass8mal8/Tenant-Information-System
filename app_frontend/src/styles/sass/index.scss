@@ -1,78 +1,74 @@
-@import './variables';
-@import './authentication.scss';
-
+@import "./variables";
+@import "./authentication.scss";
 
 body {
-    background: whitesmoke;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
+	background: whitesmoke;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
 }
 
 .container {
-    font-family: $poppins;
+	font-family: $poppins;
 
-    .dashboard-card {
-        background: white;
-        padding: 16px;
-        width: 100%;
-        align-items: center;
-    }
+	.dashboard-card {
+		background: white;
+		padding: 16px;
+		width: 100%;
+		align-items: center;
+	}
 
-    .primary-btn {
-        background:$very-light-blue;
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 40px;
-        margin-top: 20px;
-        font-weight: bold;
-        text-transform: capitalize;
-        font-size: 20px;
-        color: white;
+	.primary-btn {
+		background: $very-light-blue;
+		width: 100%;
+		padding: 10px;
+		margin-bottom: 40px;
+		margin-top: 20px;
+		font-weight: bold;
+		text-transform: capitalize;
+		font-size: 20px;
+		color: white;
 
-        &:hover {
-            background: $very-light-blue;
-        }
-    }
+		&:hover {
+			background: $very-light-blue;
+		}
+	}
 
-    .sidenav {
-        background: #ffffff;
-        height: 100vh;
-        margin-left: 0px;
-        margin-top: -65px;
+	.sidenav {
+		background: #ffffff;
+		height: 100vh;
+		margin-left: 0px;
+		margin-top: -65px;
 
-        li {
-            &:hover {
-                cursor: pointer;
-                transition: .5s;
-            }
-        }
-    }
+		li {
+			&:hover {
+				cursor: pointer;
+				transition: 0.5s;
+			}
+		}
+	}
 
-    .logo {
-        // margin-top: 30px;
-        // margin-left: 35px;
-        margin: 30px auto 10px 35px;
-    }
+	.logo {
+		margin: 30px auto 10px 35px;
+	}
 
-    .navbar {
-        width: 71%;
-        margin-left: 27%;
-        background-color: white;
-        color: black;
-        font-family: $poppins;
-    }
+	.navbar {
+		width: 71%;
+		margin-left: 27%;
+		background-color: white;
+		color: black;
+		font-family: $poppins;
+	}
 
-    .redirect-link {
-        text-transform: lowercase;
-        width: 100%;
-        a {
-            color: gray;
-            text-align: center;
-            text-decoration: none;
-        }
-    }
-    
+	.redirect-link {
+		text-transform: lowercase;
+		width: 100%;
+		a {
+			color: gray;
+			text-align: center;
+			text-decoration: none;
+		}
+	}
 }
