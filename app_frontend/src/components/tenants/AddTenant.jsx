@@ -20,8 +20,8 @@ const AddTenant = () => {
 	const [tenantDetails, setTenantDetails] = useState();
 	const { auth: user } = useContext(AuthContext);
 	const { user_id } = user;
-	const url = `http://localhost:5000/api/tenants/add/${user_id}`;
-	const propertyURI = `http://localhost:5000/api/house/${user_id}`;
+	const url = `https://tenant-information-system.onrender.com/api/tenants/add/${user_id}`;
+	const propertyURI = `https://tenant-information-system.onrender.com/api/house/${user_id}`;
 
 	const { post, loading } = usePost(url);
 	const { data } = useFetch("appartments", propertyURI);

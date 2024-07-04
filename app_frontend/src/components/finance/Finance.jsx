@@ -7,7 +7,7 @@ import FinanceList from "./FinanceList";
 const Finance = () => {
 	const { auth: user } = useContext(AuthContext);
 	const { user_id } = user;
-	const url = `http://localhost:5000/api/finance/${user_id}`;
+	const url = `https://tenant-information-system.onrender.com/api/finance/${user_id}`;
 
 	const { data } = useFetch("finances", url);
 	return (

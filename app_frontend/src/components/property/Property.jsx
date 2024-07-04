@@ -8,17 +8,17 @@ import { useNavigate } from "react-router-dom";
 import AddProperty from "./AddProperty";
 
 const property = () => {
-    const { auth: user } = useContext(AuthContext)
-    const { user_id } = user
-    const url = `http://localhost:5000/api/house/${user_id}`
+	const { auth: user } = useContext(AuthContext);
+	const { user_id } = user;
+	const url = `https://tenant-information-system.onrender.com/api/house/${user_id}`;
 
-    const { isLoading, data, isFetching, error } = useFetch("appartments", url)
-    console.log(data)
-    return (  
-        <Box sx={{mt: 5}}>
-            <PropertyList properties={data?.appartments || [] } />
-        </Box>
-    );
-}
- 
+	const { isLoading, data, isFetching, error } = useFetch("appartments", url);
+	console.log(data);
+	return (
+		<Box sx={{ mt: 5 }}>
+			<PropertyList properties={data?.appartments || []} />
+		</Box>
+	);
+};
+
 export default property;

@@ -15,7 +15,7 @@ import PrimaryButton from "../PrimaryButton";
 const AddProperty = () => {
 	const { auth: user } = useContext(AuthContext);
 	const { user_id } = user;
-	const url = `http://localhost:5000/api/house/add-house/${user_id}`;
+	const url = `https://tenant-information-system.onrender.com/api/house/add-house/${user_id}`;
 	const { loading, post, error } = usePost(url);
 	const [propertyDetails, setPropertyDetails] = useState();
 	const navigate = useNavigate();

@@ -24,8 +24,8 @@ const AddFinance = () => {
 	const { user_id } = user;
 	const [financeDetails, setFinanceDetails] = useState();
 
-	const tenantURI = `http://localhost:5000/api/tenants/${user_id}`;
-	const propertyURI = `http://localhost:5000/api/house/${user_id}`;
+	const tenantURI = `https://tenant-information-system.onrender.com/api/tenants/${user_id}`;
+	const propertyURI = `https://tenant-information-system.onrender.com/api/house/${user_id}`;
 	const [snackError, setSnackError] = useState("");
 	const [open, setOpen] = useState(false);
 
@@ -54,7 +54,7 @@ const AddFinance = () => {
 		});
 	}, [houseNumber, tenantName]);
 
-	const financeURI = `http://localhost:5000/api/finance/add/${tenant_id}`;
+	const financeURI = `https://tenant-information-system.onrender.com/api/finance/add/${tenant_id}`;
 	const { post, loading } = usePost(financeURI);
 
 	const handleInputChange = (e) => {

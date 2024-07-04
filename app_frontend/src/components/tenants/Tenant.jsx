@@ -7,18 +7,18 @@ import TenantList from "./TenantList";
 import EditTenant from "./EditTenantForm";
 
 const Tenant = () => {
-    const { auth: user } = useContext(AuthContext)
-    const { user_id } = user
-    const url = `http://localhost:5000/api/tenants/${user_id}`
-    const { isLoading, data, isFetching, error } = useFetch("tenants", url)
-    console.log(data)
-    const [open, setOpen] = useState(true)
-    return (  
-        <Box sx={{mt: 5}}>
-            <TenantList tenants={data?.tenants || [] } />
-            {/* <EditTenant open={open} /> */}
-        </Box>
-    );
-}
- 
+	const { auth: user } = useContext(AuthContext);
+	const { user_id } = user;
+	const url = `https://tenant-information-system.onrender.com/api/tenants/${user_id}`;
+	const { isLoading, data, isFetching, error } = useFetch("tenants", url);
+	console.log(data);
+	const [open, setOpen] = useState(true);
+	return (
+		<Box sx={{ mt: 5 }}>
+			<TenantList tenants={data?.tenants || []} />
+			{/* <EditTenant open={open} /> */}
+		</Box>
+	);
+};
+
 export default Tenant;
